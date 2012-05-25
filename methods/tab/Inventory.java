@@ -198,14 +198,14 @@ public class Inventory {
 	}
 
 	public static WidgetChild getWidget(final boolean cached) {
+		if (!cached) {
+			Tabs.INVENTORY.open(true);
+		}
 		for (final int widget : ALT_WIDGETS) {
 			WidgetChild inventory = Widgets.get(widget, 0);
 			if (inventory != null && inventory.getAbsoluteX() > 50) {
 				return inventory;
 			}
-		}
-		if (!cached) {
-			Tabs.INVENTORY.open(true);
 		}
 		return Widgets.get(WIDGET, 0);
 	}
